@@ -1,0 +1,98 @@
+{% extends 'bookstore/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="pdf-container">
+    <div id="pdf-viewer" oncontextmenu="return false;"></div> <!-- Disables right-click -->
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.6.347/pdf.min.js"></script>
+<script>
+    const url = "{{ book.pdf.url }}";
+    pdfjsLib.GlobalWorkerOptions.workerSrc = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.6.347/pdf.worker.min.js";
+
+    function getScale() {
+        // Adjust the base scale for small screens
+        const baseScale = window.innerWidth < 768 ? 0.8 : 1.5;  // Increased from 0.5 to 0.8 for small screens
+        return baseScale * window.devicePixelRatio;
+    }
+
+    function renderPDF() {
+        const scale = getScale();
+        pdfjsLib.getDocument(url).promise.then(pdf => {
+            const pdfViewer = document.getElementById("pdf-viewer");
+            pdfViewer.innerHTML = "";
+            const totalPages = pdf.numPages;
+
+            for (let pageNum = 1; pageNum <= totalPages; pageNum++) {
+                pdf.getPage(pageNum).then(page => {
+                    const viewport = page.getViewport({ scale: scale });
+
+                    const canvas = document.createElement("canvas");
+                    const context = canvas.getContext("2d");
+
+                    const outputScale = window.devicePixelRatio || 1;
+                    canvas.width = viewport.width * outputScale;
+                    canvas.height = viewport.height * outputScale;
+                    context.scale(outputScale, outputScale);
+
+                    context.imageSmoothingEnabled = true;
+                    context.imageSmoothingQuality = "high";
+
+                    canvas.style.width = "100%";
+                    canvas.style.maxWidth = "100%";
+                    canvas.style.marginBottom = "15px";
+                    
+                    // Prevent drag and drop saving
+                    canvas.style.userSelect = "none";
+                    canvas.style.pointerEvents = "none";
+
+                    pdfViewer.appendChild(canvas);
+
+                    const renderContext = {
+                        canvasContext: context,
+                        viewport: viewport
+                    };
+                    page.render(renderContext);
+                });
+            }
+        });
+    }
+
+    window.addEventListener('resize', renderPDF);
+    renderPDF();
+</script>
+
+<style>
+    .pdf-container {
+        display: flex;
+        justify-content: center;
+        padding: 20px;
+    }
+
+    #pdf-viewer {
+        max-width: 1000px;
+        width: 100%;
+        background-color: #f9f9f9;
+        padding: 10px;
+        border-radius: 5px;
+        position: relative;
+    }
+
+    /* Transparent overlay to block screenshot or right-click downloads */
+    #pdf-viewer::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(255, 255, 255, 0); /* Transparent overlay */
+        pointer-events: none;
+    }
+
+    canvas {
+        pointer-events: none; /* Prevents drag and drop */
+    }
+</style>
+{% endblock %}

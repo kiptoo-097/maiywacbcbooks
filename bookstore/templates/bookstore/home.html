@@ -1,0 +1,82 @@
+    {% extends 'bookstore/base.html' %}
+    {% load custom_tags %}
+    {% load static %}
+    {% block content %}
+
+    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <!-- First Carousel Item -->
+            <div class="carousel-item active" data-bs-interval="5000">
+                <img src="{% static 'images/pic1.jpeg' %}" class="d-block w-100 custom-carousel-image" alt="CBC Communication">
+                <div class="carousel-caption">
+                    <h4><u>CBC Core Values</u></h4>
+                    <div class="core-values" style="text-align: left;">
+                        <ul>
+                            <li>Critical thinking and problem solving.</li>
+                            <li>Communication and Collaboration.</li>
+                            <li>Creativity and Imagination.</li>
+                            <li>Learning to learn.</li>
+                            <li>Digital literacy.</li>
+                            <li>Self-efficacy.</li>
+                            <li>Citizenship.</li>
+                        </ul>
+                    </div>
+                    <a href="{% url 'books' %}" class="carousel-button">Library <span class="arrow">→</span></a>
+                    <a href="{% url 'videos' %}" class="carousel-button" style="background-color: red;">Videos <span class="arrow">▶️</span></a>  
+
+                </div>
+            </div>
+    
+            <!-- Second Carousel Item -->
+            <div class="carousel-item" data-bs-interval="4000">
+                <img src="{% static 'images/pic2.jpeg' %}" class="d-block w-100 custom-carousel-image" alt="Another Image">
+                <div class="carousel-caption">
+                    <h4><u>Mission</u></h4>
+                    <div class="mission" style="text-align: center;">
+                        <p>Anthony K. Maiywa's books enhance vital skills for growth, including critical thinking, communication, and collaboration. They foster creativity and encourage learning to learn, while building digital literacy. Focusing on self-efficacy and citizenship, the books empower readers to become confident, engaged community members.</p>
+                    </div>
+                    <a href="{% url 'books' %}" class="carousel-button">Books<span class="arrow">→</span></a>
+                    <a href="{% url 'videos' %}" class="carousel-button" style="background-color: red;">Videos<span class="arrow">▶️</span></a>  
+                </div>
+            </div>
+
+        <!-- Carousel Controls -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+    <div class="container-fluid">
+        <h2 style="text-align: center;">Available Books:</h2>
+        <div class="row g-3 justify-content-center">
+            {% for book in books %}
+            <div class="col-md-3 d-flex align-items-stretch">
+                <div class="card mb-2">
+                    {% if book.image %}
+                    <img src="{{ book.image.url }}" alt="Cover Image" style="width:auto; height:auto;">
+                    {% endif %}
+                    <div class="card-body">
+                        <h5 class="book-title-sm"><u>{{ book.title }}</u> </h5>
+                        <p class="card-text">{{ book.description }}</p>
+                        {% if requests_dict|dict_key:book.id %}
+                            {% if requests_dict|dict_key:book.id %}
+                                <a href="{% url 'read_book' book.id %}" class="btn btn-success">Read Book</a>
+                            {% else %}
+                                <button class="btn btn-secondary" disabled>Pending Approval</button>
+                        {% endif %}
+                        {% else %}
+                            <a href="{% url 'book_request' book.id %}" class="btn btn-primary">Request Access</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+    
+{% endblock %}

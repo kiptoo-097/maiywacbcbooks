@@ -1,0 +1,48 @@
+{% extends 'bookstore/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+    <!-- Greeting Section -->
+<h3>
+    <div id="greeting" class="my-4" data-username="{{ user.username }}">
+        <!-- This will be populated with the greeting message -->
+    </div>
+</h3>
+
+<!-- Profile Section -->
+<h6 style="text-align: center;">Your Book Requests / Library</h6>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Book</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for user_request in user_requests %}
+        <tr>
+            <td>{{ user_request.book.title }}</td>
+            <td>{% if user_request.approved %} Approved {% else %} Pending {% endif %}</td>
+            <td>
+                {% if user_request.approved %}
+                    <a href="{% url 'read_book' user_request.book.id %}" class="btn btn-success">Read Book</a>
+                {% else %}
+                    <button class="btn btn-secondary" disabled>Awaiting approval</button>
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+    
+</table>
+
+<a href="https://wa.me/+2540725793204">
+    <button class="delay-approval" style="color: blue;">Experiencing Longer Approval? CLICK HERE!</button>
+</a>
+
+</div>
+{% endblock %}
+
+

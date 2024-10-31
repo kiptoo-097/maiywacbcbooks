@@ -1,0 +1,40 @@
+{% extends 'bookstore/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="text-center mb-4">
+        <h2 class="fw-bold">
+            <span style="color: #007bff;">Unlock Access to</span> <!-- Blue color for emphasis -->
+            <span >"{{ book.title }}"</span> <!-- Contrasting orange color for the book title -->
+        </h2>
+        <p class="text-muted">Get immediate access to this valuable resource for just <strong>50 Ksh</strong> via M-Pesa Paybill.</p>
+    </div>
+
+    <div class="card mx-auto shadow-lg" style="max-width: 600px; border-radius: 15px;">
+        <div class="card-body p-4">
+            <h4 class="card-title text-center mb-3" style="color: #28a745;">How to Pay via M-Pesa</h4>
+            <ul class="list-group list-group-flush mb-4">
+                <li class="list-group-item">1. Go to your M-Pesa menu on your phone.</li>
+                <li class="list-group-item">2. Select <strong>Lipa na M-Pesa</strong> and then <strong>Paybill</strong>.</li>
+                <li class="list-group-item">3. Enter the Paybill Number: <strong>982100</strong>.</li>
+                <li class="list-group-item">4. Enter the Account Number: <strong>3204</strong>.</li>
+                <li class="list-group-item">5. Enter the amount: <strong>Ksh 60</strong>.</li>
+                <li class="list-group-item">6. Confirm the details and complete the transaction.</li>
+            </ul>
+            <p class="text-center text-success mb-3">Once the payment is successful, paste your M-Pesa transaction ID below to complete your request.</p>
+
+            <form method="POST" class="text-center" id="mpesa-form" onsubmit="return validateForm()">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-success btn-lg mt-3" style="background-color: #ff5733; border-color: #ff5733;">Send Request</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="alert alert-info text-center mt-4" role="alert" style="max-width: 600px; margin: 0 auto;">
+        <strong>Note:</strong> Once we verify your payment, you will receive access to the book within a few minutes!
+    </div>
+</div>
+
+{% endblock %}

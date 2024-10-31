@@ -1,0 +1,33 @@
+{% extends 'bookstore/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-4">
+    <header class="page-header text-center mb-4">
+        <h1 class="header-title">Explore Library</h1>
+        <p class="header-subtitle">Discover a world of knowledge, creativity, and inspiration with Anthony K. Maiywa's curated selection of books.</p>
+    </header>
+    <div class="row justify-content-center">
+        {% for book in books %}
+        <div class="col-md-3 col-sm-6 mb-4">
+            <div class="card h-100">
+                {% if book.image %}
+                <img class="card-img-top img-fluid" src="{{ book.image.url }}" alt="Book Cover" style="max-height: 100%; object-fit: cover;">
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title">{{ book.title }}</h5>
+                    <p class="card-text description">
+                        {{ book.description|truncatewords:20 }} 
+                        <span class="more-text" style="display: none;">{{ book.description }}</span>
+                    </p>
+                    <a href="#" class="btn btn-link read-more">Read More</a>
+                    <a href="{% url 'book_request' book.id %}" class="btn btn-primary">Request Access</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    
+</div>
+
+{% endblock %}

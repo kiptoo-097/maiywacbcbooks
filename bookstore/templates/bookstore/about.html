@@ -1,0 +1,39 @@
+{% extends 'bookstore/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<body>
+
+  <div class="container author-section">
+    <div class="row">
+      <div class="col-lg-4 col-md-6 author-img">
+        <img src="{% static 'images/maiywa.jpg' %}" alt="Anthony K. Maiywa">
+      </div>
+      <div class="col-lg-8 col-md-6 author-info" style="text-align: justify;">
+        <h1>Anthony K. Maiywa</h1>
+        <p>Anthony K. Maiywa is a professional teacher and a published author, poet, freelance writer, and blogger. He has a passion for writing short stories and novellas. He is an educational newspaper correspondent. His work touches children’s literature, functional writing, and creative writing.</p>
+        <p>As a motivational speaker, counselor, and life coach, he has influenced many lives. Anthony holds a B.E.D (ARTS) in English literature from the University of Nairobi and currently teaches in Bomet County.</p>
+        <p>His books, like "From the Worst to the Best" and "The Honey Cartel and Other Stories," are designed to enhance understanding of English concepts. They have practical applications for learners at various levels.</p>
+        
+        <a href="{% url 'books' %}">
+          <ul class="book-list">
+            <li><strong>Books Authored:</strong></li>
+            <li>From the Worst to the Best (Published by KLB)</li>
+            <li>Composition Network(Published by JB)</li>
+            <li>The Honey Cartel and Other Stories</li>
+          </ul>
+        </a>
+        <a href=" {% url 'contact' %} " class="btn btn-primary">Contact Author</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
+
+{% endblock %}

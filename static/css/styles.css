@@ -1,0 +1,396 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Main content area grows to fill available space */
+.content {
+  flex: 1; /* This makes the content area flexible */
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.logo-img {
+    height: 60px;
+    width: 100px;
+}
+
+/* Make the navbar responsive */
+@media (max-width: 430px) {
+    .navbar-brand span {
+        font-size: 1.2rem;
+
+    }
+    
+    .logo-img {
+        height: 60px;
+        width: 80px;
+    }
+    .slogan{
+        font-size: 0.3rem;
+
+    }
+    .navbar-title{
+      font-size: 1.2rem;
+    }
+    
+}
+
+/* maiywa slogan */
+.slogan{
+    font-style: italic;
+    font-weight: lighter;
+    font-size: 1rem;
+}
+
+
+
+
+
+
+.button1 {
+    color: green;
+    border: red;
+    border-radius: 5%;
+    background-color: white;
+  }
+
+.button2 {
+    color:blue;
+    border: red;
+    border-radius: 5%;
+    background-color: white;
+}
+.button3 {
+    color: white;
+    border: red;
+    border-radius: 5%;
+    background-color: red;
+}
+
+/* about page */
+body {
+    background-color: #f8f9fa;
+  }
+  .author-section {
+    margin-top: 50px;
+  }
+  .author-img img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Adjust image height for smaller screens */
+@media (max-width: 768px) {
+    .author-img img {
+      max-height: 350px; /* Set a maximum height for small screens */
+      object-fit: cover; /* Maintain aspect ratio and ensure it covers the area */
+    }
+  }
+  .author-info {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  .author-info h1 {
+    font-size: 2.5rem;
+    color: #343a40;
+  }
+  .author-info p {
+    font-size: 1.1rem;
+    color: #6c757d;
+    line-height: 1.8;
+  }
+  .book-list {
+    margin-top: 20px;
+    color: #007bff;
+  }
+  .book-list li {
+    font-size: 1rem;
+  }
+  .btn-primary {
+    margin-top: 20px;
+  }
+
+  /* General styles */
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Navbar styles */
+.navbar {
+  background-color: #343a40; /* Dark background */
+  font-size: 16px; /* Adjust font size */
+}
+
+.navbar-brand {
+  color: white;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.navbar-brand .slogan {
+  font-size: 0.75rem; /* Small font for slogan */
+  font-style: italic;
+  color: #f8f9fa;
+  margin-top: -5px;
+}
+
+/* Nav item spacing and color */
+.navbar-nav .nav-item {
+  margin-right: 15px; /* Add space between nav items */
+}
+
+.navbar-nav .nav-link {
+  color: black; /* Light color for text */
+  padding: 8px 15px;
+  transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+/* Hover effect on nav items */
+.navbar-nav .nav-link:hover {
+  background-color: #495057; /* Slightly darker background on hover */
+  color: #f8f9fa;
+  border-radius: 4px;
+}
+
+/* Button styles */
+button.button1, button.button2, button.button3 {
+  font-weight: bold;
+  background-color: #17a2b8;
+  border: none;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button.button1:hover, button.button2:hover, button.button3:hover {
+  background-color: #138496; /* Darken on hover */
+}
+
+button.button3 {
+  background-color: #dc3545; /* Red for Logout */
+}
+
+button.button3:hover {
+  background-color: #c82333; /* Darken logout button on hover */
+}
+
+/* Navbar toggler for small screens */
+
+
+
+html, body {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Main content area grows to fill available space */
+.content {
+  flex: 1; /* This makes the content area flexible */
+}
+
+
+.custom-carousel-image {
+  max-height: 400px; /* Adjust this value to your desired height */
+  object-fit: cover; /* Ensures that the image fills the container properly */
+}
+
+.carousel-caption {
+  font-size: 1rem; /* Adjust font size for better readability on small screens */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add a shadow for better contrast */
+  background: rgba(0, 0, 0, 0.5); /* Optional: semi-transparent background for text */
+  padding: 10px; /* Add padding for better spacing */
+  text-shadow: #343a40;
+}
+
+
+
+.card {
+  display: flex;
+  flex-direction: column;
+  height: 100%; /* Makes the card take the full height of its parent */
+}
+
+.card-body {
+  flex: 1; /* Ensures the card body expands to fill available space */
+}
+
+.card-title, .card-text {
+  margin-bottom: 0.5rem; /* Adds some spacing between elements */
+}
+
+.card img {
+  max-width: 100%; /* Ensures images do not exceed the card's width */
+  height: auto; /* Keeps the image's aspect ratio */
+}
+
+
+/* Styling the button */
+.carousel-button {
+  display: inline-block;
+  margin-top: 10px; /* Space between the paragraph and the button */
+  padding: 10px 20px;
+  background-color: #007bff; /* Blue background color */
+  color: #ffffff; /* White text color */
+  text-decoration: none; /* Removes the underline from the link */
+  font-weight: bold;
+  border-radius: 5px; /* Rounded corners */
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transitions for hover effects */
+  cursor: pointer;
+}
+
+/* Hover effect for the button */
+.carousel-button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+  transform: translateY(-2px); /* Slight lift on hover */
+}
+
+/* Styling the arrow */
+.carousel-button .arrow {
+  display: inline-block;
+  margin-left: 8px; /* Space between text and arrow */
+  transition: transform 0.3s ease; /* Smooth transition for arrow animation */
+}
+
+/* Arrow animation on hover */
+.carousel-button:hover .arrow {
+  transform: translateX(5px); /* Moves the arrow slightly to the right on hover */
+}
+
+/* Styling the button */
+.carousel-button {
+  display: inline-block;
+  margin-top: 10px; /* Space between the paragraph and the button */
+  padding: 10px 20px;
+  background-color: #007bff; /* Blue background color */
+  color: #ffffff; /* White text color */
+  text-decoration: none; /* Removes the underline from the link */
+  font-weight: bold;
+  border-radius: 5px; /* Rounded corners */
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transitions for hover effects */
+  cursor: pointer;
+}
+
+/* Hover effect for the button */
+.carousel-button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+  transform: translateY(-2px); /* Slight lift on hover */
+}
+
+/* Styling the arrow */
+.carousel-button .arrow {
+  display: inline-block;
+  margin-left: 8px; /* Space between text and arrow */
+  animation: bounce 1s infinite; /* Continuous bouncing animation */
+}
+
+/* Keyframes for the bouncing effect */
+@keyframes bounce {
+  0%, 100% {
+      transform: translateY(0); /* Start at the original position */
+  }
+  50% {
+      transform: translateY(-5px); /* Move up slightly */
+  }
+}
+
+/* Styling the button */
+.carousel-button {
+  display: inline-block;
+  margin-top: 10px; /* Space between the paragraph and the button */
+  padding: 10px 20px;
+  background-color: #007bff; /* Blue background color */
+  color: #ffffff; /* White text color */
+  text-decoration: none; /* Removes the underline from the link */
+  font-weight: bold;
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer;
+  animation: button-bounce 1.5s infinite; /* Continuous bouncing animation for the button */
+  transition: background-color 0.3s ease; /* Smooth transition for hover effects */
+}
+
+/* Hover effect for the button */
+.carousel-button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Continuous bouncing animation for the arrow */
+.carousel-button .arrow {
+  display: inline-block;
+  margin-left: 8px; /* Space between text and arrow */
+  animation: arrow-bounce 1.5s infinite; /* Continuous bouncing animation for the arrow */
+}
+
+/* Keyframes for the button bouncing effect */
+@keyframes button-bounce {
+  0%, 100% {
+      transform: translateY(0); /* Original position */
+  }
+  50% {
+      transform: translateY(-5px); /* Move up slightly */
+  }
+}
+
+/* Keyframes for the arrow bouncing effect */
+@keyframes arrow-bounce {
+  0%, 100% {
+      transform: translateY(0); /* Original position */
+  }
+  50% {
+      transform: translateY(-3px); /* Move up slightly less than the button */
+  }
+}
+
+/* Styling for the page header */
+.page-header {
+  background-color: #f8f9fa; /* Light background color */
+  padding: 20px; /* Space around the header content */
+  border-radius: 8px; /* Rounded corners for the header section */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for a lifted effect */
+}
+
+.header-title {
+  font-size: 2.5rem; /* Large font size for the main title */
+  color: #007bff; /* Blue color for the header title */
+  margin-bottom: 10px; /* Space between the title and the subtitle */
+  font-weight: bold; /* Bold font for emphasis */
+}
+
+.header-subtitle {
+  font-size: 1.2rem; /* Smaller size for the subtitle */
+  color: #555; /* Gray color for the subtitle text */
+  margin-bottom: 0; /* No margin at the bottom */
+}
+
+/* Responsive styling to ensure the header looks good on all screen sizes */
+@media (max-width: 768px) {
+  .header-title {
+      font-size: 2rem; /* Adjust title size for smaller screens */
+  }
+  .header-subtitle {
+      font-size: 1rem; /* Adjust subtitle size for smaller screens */
+  }
+}
+
+.video-gallery {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.video-item {
+  margin: 20px;
+  width: 90%; /* Adjust as needed */
+}
