@@ -53,3 +53,4 @@ function validateForm() {
     }
     return true; // Allow the form to submit if all fields are properly filled
 }
+
